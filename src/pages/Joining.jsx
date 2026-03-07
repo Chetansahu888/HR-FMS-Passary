@@ -737,9 +737,9 @@ const Joining = () => {
         item.applyingForPost ?? "",
         item.department ?? "",
         item.candidateName ?? "",
-        item.candidatePhone ?? "",
+        `\t${String(item.candidatePhone ?? "")}`,
         item.candidateEmail ?? "",
-        item.aadharNo ?? "",
+        `\t${String(item.aadharNo ?? "")}`,
         item.presentAddress ?? "",
         formatDateForDisplay(item.plannedDate),
         formatDateForDisplay(item.actualJoiningDate),
@@ -775,11 +775,11 @@ const Joining = () => {
         item.designation ?? "",
         item.department ?? "",
         formatDateForDisplay(item.dateOfJoining),
-        item.candidatePhone ?? "",
+        `\t${String(item.candidatePhone ?? "")}`,
         item.candidateEmail ?? "",
-        item.aadharNo ?? "",
+        `\t${String(item.aadharNo ?? "")}`,
         item.presentAddress ?? "",
-        item.currentBankAccountNo ?? "",
+        `\t${String(item.currentBankAccountNo ?? "")}`,
         item.currentBankIfsc ?? "",
         item.branchName ?? "",
         item.previousCompanyName ?? "",
@@ -792,6 +792,13 @@ const Joining = () => {
       return str.includes(",") || str.includes('"') || str.includes("\n")
         ? `"${str.replace(/"/g, '""')}"`
         : str;
+    };
+
+    // Force Excel to treat numeric fields as text (prevents scientific notation)
+    const forceText = (val) => {
+      const str = String(val ?? "");
+      // Only prefix purely numeric strings (phone, aadhar, bank ac numbers)
+      return /^\d+$/.test(str.trim()) ? `\t${str}` : escape(str);
     };
 
     const csvContent = [

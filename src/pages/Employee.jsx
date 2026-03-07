@@ -166,9 +166,9 @@ const Employee = () => {
         item.department || "",
         item.dateOfBirth || "",
         item.gender || "",
-        item.mobileNo || "",
+        `\t${String(item.mobileNo || "")}`,
         item.emailId || "",
-        item.aadharNo || ""
+        `\t${String(item.aadharNo || "")}`
       ]);
     } else {
       headers = [
@@ -251,8 +251,8 @@ const Employee = () => {
           <nav className="flex -mb-px">
             <button
               className={`py-4 px-6 font-medium text-sm border-b-2 ${activeTab === "joining"
-                  ? "border-indigo-500 text-indigo-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                ? "border-indigo-500 text-indigo-600"
+                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }`}
               onClick={() => setActiveTab("joining")}
             >
@@ -261,8 +261,8 @@ const Employee = () => {
             </button>
             <button
               className={`py-4 px-6 font-medium text-sm border-b-2 ${activeTab === "leaving"
-                  ? "border-indigo-500 text-indigo-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                ? "border-indigo-500 text-indigo-600"
+                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }`}
               onClick={() => setActiveTab("leaving")}
             >

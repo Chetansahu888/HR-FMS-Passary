@@ -559,7 +559,7 @@ const AfterJoiningWork = () => {
         item.punchCode ?? "",
         item.emailId ?? "",
         item.emailPassword ?? "",
-        item.currentBankAccountNo ?? "",
+        `\t${String(item.currentBankAccountNo ?? "")}`,
         item.currentBankIfsc ?? "",
         item.designation ?? "",
         item.companyName ?? "",

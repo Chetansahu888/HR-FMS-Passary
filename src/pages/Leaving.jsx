@@ -155,7 +155,7 @@ const Leaving = () => {
         item.dateOfJoining || '',
         item.designation || '',
         item.department || '',
-        item.mobileNo || '',
+        `\t${String(item.mobileNo || "")}`,
         item.firmName || '',
         item.workingPlace || ''
       ]);
